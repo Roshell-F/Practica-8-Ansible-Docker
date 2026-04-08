@@ -1,0 +1,35 @@
+- name: Tarea práctica Ansible
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Actualizar paquetes
+      apt:
+        update_cache: yes
+
+    - name: Crear usuario itla
+      user:
+        name: itla
+        password: "{{ 'itla' | password_hash('sha512') }}"
+
+    - name: Crear carpeta app
+      file:
+        path: /home/itla/app
+        state: directory
+        owner: itla
+        group: itla
+        mode: '0755'
+
+    - name: Crear archivo hola.txt
+      copy:
+        content: "Hola desde Ansible"
+        dest: /home/itla/app/hola.txt
+        owner: itla
+        group: itla
+
+    - name: Instalar cowsay y htop
+      apt:
+        name:
+          - cowsay
+          - htop
+        state: present

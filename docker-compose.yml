@@ -1,0 +1,25 @@
+services:
+  server1:
+    build: .
+    ports:
+      - "2221:22"
+
+  server2:
+    build: .
+    ports:
+      - "2232:22"
+
+  server3:
+    build: .
+    ports:
+      - "2233:22"
+
+  server4:
+    build: .
+    ports:
+      - "2234:22"
+
+  server5:
+    build: .
+    ports:
+      - "2235:22"
