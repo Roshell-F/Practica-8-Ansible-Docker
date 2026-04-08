@@ -40,4 +40,4 @@ RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
 
 EXPOSE 80
 
-CMD service nginx start && /usr/sbin/sshd -D
+CMD  ["nginx", "-g", "daemon off;"]
